@@ -1,0 +1,25 @@
+.app-shell {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.app-header,
+.app-footer {
+	padding: 1rem 2rem;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.app-footer {
+	border-bottom: none;
+	border-top: 1px solid #e5e7eb;
+}
+
+.app-main {
+	flex: 1;
+}
+
+.app-header h1,
+.app-footer p {
+	margin: 0;
+}
