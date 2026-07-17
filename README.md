@@ -38,3 +38,21 @@ React.memo is a pure component
 class component also has pure component, with this we can decrease re rendering 
 product.tsx is utility component or feature specific component
 soc architecture has independent component and independent services
+
+Clean Architecture:
+Presentation layer
+Application Layer/Core Layer
+Domain Layer
+Infrastructure Layer
+Which layer interacts with databse operations nd API Calling -Infrastructure
+api-context  : as we have hyphen it is snake case
+storage:session or local or cookies
+Interceptor:It is service or middleware used to add token related information adding within the .before api call is going to API we intercept and add token related info
+infrastructure layer:It will interact with backend data
+web socket:
+I will create seperate amount of memory and make API call.It works independent of application.It will not come Under event loop
+Domain:
+deals with mOdels/Entities.Entities contains Enums.enum is nothing but a named constact eg:success always 1, error always -1.
+Application layer:
+contains Business Logic
+State ->hold data and bind to jsx
