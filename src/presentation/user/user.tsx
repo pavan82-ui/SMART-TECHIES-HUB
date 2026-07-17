@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-
+import { UserInfo } from "../shared/user-info/user-info";
+import { getUsers } from "../../application/user/user.service";
 export function User() {
     const [users, setUsers] = useState<any[]>([]);
 
     useEffect(() => {
-        getUsers();
+        get();
     }, []);
 
     //   function getUsers() {
@@ -21,16 +22,13 @@ export function User() {
     //     // setUsers(resjson.users);
     // }
 
-    async function getUsers() {
-        const url = "https://dummyjson.com/users";
+    async function get() {
+       // const url = "https://dummyjson.com/users";
 
-        let res = await fetch(url); //this will wait until we get daat from url
-        let resjson = await res.json(); //raw json to JSON
-        console.log(resjson.users);
-        setUsers(resjson.users);
         //sync await will wait for the response and then continue next line of code
+        let res = await  getUsers(); //this will wait until we get daat from url
+        setUsers(res.users);
     }
-
 
 
     return (
@@ -54,11 +52,7 @@ export function User() {
                     {
                         users && users.map((user)=>{
                             return (
-                                <tr key={user.id}>
-                                    <td>{user.id}</td>
-                                    <td>{user.firstName} {user.lastName}</td>
-                                    <td>{user.email}</td>
-                                </tr>
+                              <UserInfo user={user}></UserInfo>
                             )
                         })
                     }
