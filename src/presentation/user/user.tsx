@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
-import { UserInfo } from "../shared/user-info/user-info";
+import  UserInfo  from "../shared/user-info/user-info";
 import { getUsers } from "../../application/user/user.service";
 export function User() {
     const [users, setUsers] = useState<any[]>([]);
-
+    const [cnt,setcnt] = useState(0);
     useEffect(() => {
         get();
+        setInterval(() => {
+            setcnt(cnt+1);
+        }, 10);
     }, []);
 
     //   function getUsers() {
@@ -33,7 +36,7 @@ export function User() {
 
     return (
         <>
-            User
+            User {cnt}
             <table>
                 <thead>
                     <tr>
@@ -52,7 +55,7 @@ export function User() {
                     {
                         users && users.map((user)=>{
                             return (
-                              <UserInfo user={user}></UserInfo>
+                              <UserInfo user={user}></UserInfo> // this only stops rerendering other code rerendering
                             )
                         })
                     }

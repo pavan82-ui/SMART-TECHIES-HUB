@@ -56,3 +56,21 @@ deals with mOdels/Entities.Entities contains Enums.enum is nothing but a named c
 Application layer:
 contains Business Logic
 State ->hold data and bind to jsx
+
+4.clean architecture:
+Presentation - components
+Application -use cases ports
+Domain-Entities,Interfaces,Enums
+Infrastructure:Apicontext service,Repositories,LOcalstorageAdapter
+1st infrastructure calls the API
+why typescript:
+js cannot detect compile time issues
+why user-props.ts
+user is specific to one item one user user is having one email,id,firstname
+HOC:
+A component taking component as input parameter is called HOC  (export default React.Memo(UserInfo))
+React.memo is HOC which Improves Performance
+create component with react.memo(functional component) -> functional pure component
+Pure vs impure component
+react.memo is pure ,normal is impure
+Use of Shared Component:reusable component, control rerenders when creating pure components
