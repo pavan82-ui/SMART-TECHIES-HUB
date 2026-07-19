@@ -99,3 +99,216 @@ Rest Parameter: allows allors infinite no. of arguments as an array
 Rest vs Spread operator:
 rest used in function paramer... function fn(...args)
 spread:in function call or array/object Math.max(...[1,2,3]) .it streads array into single parameters
+
+6.Functions:
+function is reusable logic to perform certain task
+2operations -sync(operations which completes immediately),Async(after sometime-API,timer)
+3 types
+1)Declarative fn(named function) types
+  1)General function which is non returnable,no parameter
+  2)Parameterized fn
+  3)Returnable fn
+2)Expression fn (eg: a=b) - no named fns
+  1)Anonymous fn
+  2)variable defind fn
+  3)arrow fn- short hand of anonymous fn
+3)SIF /IIF
+Parameterized: named param,optional param,rest(...),de-structure
+Scope & Closure:
+Scope:
+Global Scope  -define variable outside of function
+Functional / Local Scope - define variable inside of function
+  function greet()
+  {
+    var name="pavan"// function scope
+    console.log(name);
+  }
+  greet();
+  console.log(name); //reference error
+Block Scope - define variable inside of braces({})
+function details()
+{
+    {
+    var name="krishna";
+    }
+    {
+        consol.log(name);
+    }
+}
+details(); // i will get 2 krisha. if u use let u will get only one krisha; var is not block scope variable let is block scope variable
+Lexical Scope - clouser (store info/data.it will consume previous data and do next operation)
+Scope Chain
+Scope Pollution
+Scope Shadowing
+function x()
+{
+ a=10;
+}
+console.log(a); // a is not defined
+
+function x()
+{
+ a=10;
+}
+x();
+console.log(a);  //10 because a is global scope
+Assign data to a variable without var/let/ const will become global scope
+
+console.log(a);  //error
+x();
+
+function x()
+{
+ var a=10;
+}
+x();
+console.log(a);  //reference error 
+
+Scope Shadowing:
+var a=1; 
+function details(){
+var a=10;
+}
+details() /polluting a this is scope pollution
+
+let a=1;
+function details()
+{
+var a=10;
+}
+details();
+console.log(a); //1
+
+function details()
+{
+var a=10;
+}
+details();
+console.log(a); //reference error
+closure:
+closure is a combination of variable and function
+
+function increment()
+{
+ let cnt=0; //state
+return function inc() //logic
+{
+let res =cnt++
+console.log(res);
+return res
+}
+ 
+}
+
+const counter=increment()
+counter();   //0
+counter();   //1
+counter();   //2
+
+it is rememebering previos value the scope is called lexical scope anonymous returnable function we need to use
+const counter=increment()
+counter calls function increment()
+
+counter();   //0
+counter();   //1
+counter();   //2
+counter calls return function()
+
+convert to employee details
+
+
+function empdetails()
+{
+let details = []; //State
+return function (emp) { //logic
+details.push(emp);
+console.log(details);
+return details;
+}
+}
+const ed =empdetails();
+ed({id:1, name: "Krishna"});
+counter({id:2, name: "Jai"});
+counter({id:3, name: "Jaikumar"});
+ add to cart example use this
+what ever present in betwwn curly braces of empdetails is lexical scope
+Scope Chain:
+
+const a=1;
+function outer()
+{
+const b=2;
+function inner()
+{
+const c=3;
+console.log(a,b,c);
+
+}
+inner();
+}
+outer();
+when resolvig a variable js serches inner->outer->global menas c=3 first
+IIFE:
+(function ()
+{
+//logic
+})()
+
+Scope Pollution:
+creating same variable again and again with multiple variablesin a file
+Scope Shadowing:
+creating variable with same name
+
+Higher Order Functions:
+A fn taking another function as an argument eg:map,filter
+Callback:
+A fn passed as an argument to another fn
+fetch().then(()=>{})  this is callback arrw functions used as calback
+
+First class fn:
+Call back hell:
+async await removes call back hell
+
+Pure fn:
+A fn that always returns same o/p for the same i/p and has no side effects
+function add(a,b){ return a+b }
+Impure fn:
+same type i/p getting different o/p's
+let count=0;
+fn increment()
+{
+count++;
+return count;
+}
+currying:
+fn applyDisount(discount)
+{
+return fn(price){
+return price -(price*discount);
+};
+}
+const disc10=applyDiscount(10);
+disc10(10);
+disc10(20);
+price is changing bu discount remains same
+
+interview  can u sort out below eg 
+fn calPrice(dis,price)
+{
+console.log(dis,price);
+}
+calPrice(10,10);
+calPrice(10,20);
+calPrice(10,30);
+create nested fn
+fn calPrice(dis){
+return fn(price){
+console.log(dis,price);
+}
+}
+let disc=calPrice(10);
+disc(10);
+disc(20);
+disc(30);  this is called currying
+Transforming a fn that takes multiple arguments into sequence of fn's that take one argument each
+currying is nothing but closure without state
