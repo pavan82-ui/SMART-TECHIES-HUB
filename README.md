@@ -74,3 +74,28 @@ create component with react.memo(functional component) -> functional pure compon
 Pure vs impure component
 react.memo is pure ,normal is impure
 Use of Shared Component:reusable component, control rerenders when creating pure components
+Functions:
+Declarative (General,Parameterized & Returnable),Expression(Anonymous,Variable defined,Arrow function),Self Invoking -- these are synchronous functions
+If u define a function what type of scope u see:Global scope,Functional scope,block scope,Lexical scope
+closure will hold the previous value,It store previous value,we can treated as lexical scope
+First Class Function:
+2 ways of Functions based on operation 1)Synchronous2)Asynchronous
+add(1,2)
+function add(1,2)
+{
+return a+b;
+}// this is declarative function, only declarative fc are hoisted, during compilation function will move to top then add(1,2) due to hoisting, while js loading browser declarative function go at top level
+Function Expression:(Anonymous,variable defined,arrow function)
+sub(1,2)
+const sub=function(a,b){console.log(a-b)}//this will throw error becasue it is expression based fn.it will not hoist
+Arow function is part of synchronous based fn
+Arrow Function -Es6,callback,shorthand of anonymous fn
+arrow functions part of synchronous.In synchronius we have 2 things declarative fn,expression fn,arrow will come under expression fn
+Parameter and Argument:
+the values inside functions are parameters eg: const sub=(a,b) =>{consol}
+actual values are arguments 
+sub(1,2) this is argument
+Rest Parameter: allows allors infinite no. of arguments as an array
+Rest vs Spread operator:
+rest used in function paramer... function fn(...args)
+spread:in function call or array/object Math.max(...[1,2,3]) .it streads array into single parameters
