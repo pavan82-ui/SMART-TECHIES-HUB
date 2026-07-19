@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react"
-import  UserInfo  from "../shared/user-info/user-info";
-import { getUsers } from "../../application/user/user.service";
+import { useEffect, useRef, useState } from "react"
+import UserInfo from "../shared/user-info/user-info";
+import { getUsers, searchUsers } from "../../application/user/user.service";
 export function User() {
     const [users, setUsers] = useState<any[]>([]);
-    const [cnt,setcnt] = useState(0);
+    const [cnt, setcnt] = useState(0);
+    const debouncedSearch = useRef<((searchVal: string) => void) | null>(null);
+
     useEffect(() => {
         get();
-        setInterval(() => {
-            setcnt(cnt+1);
-        }, 10);
+        const interval = setInterval(() => {
+            setcnt((prev) => prev + 1);
+        }, 1000);
+
+        return () => clearInterval(interval);
     }, []);
 
     //   function getUsers() {
@@ -26,17 +30,60 @@ export function User() {
     // }
 
     async function get() {
-       // const url = "https://dummyjson.com/users";
+        // const url = "https://dummyjson.com/users";
 
         //sync await will wait for the response and then continue next line of code
-        let res = await  getUsers(); //this will wait until we get daat from url
+        let res = await getUsers(); //this will wait until we get daat from url
         setUsers(res.users);
     }
 
+    function download() {
+        window.print()
+    }
+
+    // async function search(event: any) {
+    //     setTimeout(async () => {
+    //         const searchTerm = event.target.value;
+    //         let res = await searchUsers(searchTerm);
+    //         setUsers(res.users);
+    //     }, 1000);
+
+    // }
+
+    // async function search(event: ChangeEvent<HTMLInputElement>) {
+    //     if (searchTimeoutRef.current) {
+    //         clearTimeout(searchTimeoutRef.current);
+    //     }
+
+    //     searchTimeoutRef.current = window.setTimeout(async () => {
+    //         const searchTerm = event.target.value;
+    //         const res = await searchUsers(searchTerm);
+    //         setUsers(res.users);
+    //     }, 1000);
+    // }
+    function debounce() {
+        let id = 0;
+        return function (searchVal: string) {
+            clearTimeout(id);
+            id = setTimeout(async () => {
+                const res: any = await searchUsers(searchVal);
+                console.log("res", res);
+                setUsers(res?.users ?? []);
+            }, 1000);
+        }
+    }
+
+    if (!debouncedSearch.current) {
+        debouncedSearch.current = debounce();
+    }
 
     return (
         <>
             User {cnt}
+            <div>
+                <input type="text" onChange={(event) => debouncedSearch.current?.(event.target.value)} />
+
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -53,9 +100,9 @@ export function User() {
                 </thead>
                 <tbody>
                     {
-                        users && users.map((user)=>{
+                        users && users.map((user) => {
                             return (
-                              <UserInfo user={user}></UserInfo> // this only stops rerendering other code rerendering
+                                <UserInfo user={user}></UserInfo> // this only stops rerendering other code rerendering
                             )
                         })
                     }

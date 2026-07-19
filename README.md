@@ -312,3 +312,17 @@ disc(20);
 disc(30);  this is called currying
 Transforming a fn that takes multiple arguments into sequence of fn's that take one argument each
 currying is nothing but closure without state
+DeBouncing:
+once user type is ending then only perform API call
+call stack will execute imediately
+ async function search(event: any) {
+        setTimeout(async () => {
+            const searchTerm = event.target.value;
+            let res = await searchUsers(searchTerm);
+            setUsers(res.users);
+        }, 1000);
+
+    }it will call multiple times.Here i want to memorize previous id then which concept i need closure.Closure is nothing but state and returnable function
+    Debouncing:perform operation once user types stopping, taking id,clearing id and pushing
+    debouncing is a technique  work with closure with timing functionality
+    Throttling:closure + time interval. It executes one in given time
