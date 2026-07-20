@@ -6,15 +6,6 @@ export function User() {
     const [cnt, setcnt] = useState(0);
     const debouncedSearch = useRef<((searchVal: string) => void) | null>(null);
 
-    useEffect(() => {
-        get();
-        const interval = setInterval(() => {
-            setcnt((prev) => prev + 1);
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
-
     //   function getUsers() {
     //     const url = "https://dummyjson.com/users";
     //     let res = fetch(url).then((res) => res.json()).then((res) => {
@@ -61,21 +52,32 @@ export function User() {
     //         setUsers(res.users);
     //     }, 1000);
     // }
-    function debounce() {
-        let id = 0;
+    function debounce(timeperiod: number) {
+        let timeoutId: number | null = null;
         return function (searchVal: string) {
-            clearTimeout(id);
-            id = setTimeout(async () => {
+            if (timeoutId !== null) {
+                clearTimeout(timeoutId);
+            }
+            timeoutId = window.setTimeout(async () => {
                 const res: any = await searchUsers(searchVal);
                 console.log("res", res);
                 setUsers(res?.users ?? []);
-            }, 1000);
+            }, timeperiod);
         }
     }
 
     if (!debouncedSearch.current) {
-        debouncedSearch.current = debounce();
+        debouncedSearch.current = debounce(5000);
     }
+
+    useEffect(() => {
+        get();
+        const interval = setInterval(() => {
+            setcnt((prev) => prev + 1);
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <>

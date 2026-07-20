@@ -325,4 +325,4 @@ call stack will execute imediately
     }it will call multiple times.Here i want to memorize previous id then which concept i need closure.Closure is nothing but state and returnable function
     Debouncing:perform operation once user types stopping, taking id,clearing id and pushing
     debouncing is a technique  work with closure with timing functionality
-    Throttling:closure + time interval. It executes one in given time
+    Throttling:closure + time interval. It executes one in given time during scroll we can use this
