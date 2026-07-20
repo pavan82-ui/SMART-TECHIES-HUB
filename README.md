@@ -326,3 +326,72 @@ call stack will execute imediately
     Debouncing:perform operation once user types stopping, taking id,clearing id and pushing
     debouncing is a technique  work with closure with timing functionality
     Throttling:closure + time interval. It executes one in given time during scroll we can use this
+    for(var i=0; i<3; i++)
+{
+console.log(i);
+}
+console.log(i);
+o/p: 0,1,2,3 undefined     var global scope
+
+for(let j=0; j<3; j++)
+{
+console.log(j);
+}
+console.log(j);
+0,1,2, j is undefined  here we are controlling memory leak ,on top still execution completed still we can access from ur memory use let to control memory leak
+
+for(var k=0; k<5; k++)
+{
+ setTimeout(()=>{console.log(k)},1)
+}
+o/p:5 5times
+
+for(let k=0; k<3; k++)
+{
+ setTimeout(()=>{console.log(k)},1)
+}
+o/p:0,1,2
+
+Declarative fn are defined by name which are hoisted,these fn's are early loading means memory created and load in browser
+Lazy Loading fn:not hosited because these fn's are not loaded or initialized
+Declarative fn's are early loading fn's(hoisted).Expression based fn's are lazy loading(not hoisted)
+Var -Global scope or functional scope
+let,const -ES6 version which does not support hoisted
+Why let and const were Introduced Problems with var:
+·
+No block scope
+Silent redeclaration
+Loop + async bugs
+• Global pollution
+I
+Hard-to-debug hoisting behavior
+Modern JS needed:
+• Predictable scoping
+• Safer variables
+Immutable references by default
+Hoisting
+Hoisting is JavaScript's default behaviour of moving declarations of variables and functions to the top of their containing scope during compilation. Only declarations are hoisted, not initializations.
+function d()
+{
+{
+var x=10;
+let y=11;
+}
+console.log(x);
+console.log(y);
+}
+d()
+10
+error
+block is ended still geting 10 becoz var will not support block to avoid these type of runtime issues will be cause u withdraw all amount from account,still getting block that is wrong
+
+Temporal Dead Zone:(from unavailable to undefined)
+The Temporal Dead Zone is the time between:
+• Entering scope
+And variable declaration
+During this time, accessing let or const throws a ReferenceError.
+console.log(a); // ReferenceError
+let a = 5;
+Even though let is hoisted, it is:
+Hoisted but not initialized
+Placed in TDZ until execution reaches declaration
