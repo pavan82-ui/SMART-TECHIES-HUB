@@ -395,3 +395,94 @@ let a = 5;
 Even though let is hoisted, it is:
 Hoisted but not initialized
 Placed in TDZ until execution reaches declaration
+Components:
+React JS Components
+Definitions
+A component in React JS is a reusable, independent piece of UI that defines how a part of the user interface looks and behaves.
+Components are building blocks of a React application. SHUB
+A component is a JavaScript function or class that returns JSX (UI) and can accept inputs called props.
+Types of Components
+1. Functional Components
+2. Class Components
+React JS
+fc are j.s fn's that returns jsx.
+modern react 16.8 prefers fn because of hooks.
+ways to create fc:
+general fn:
+fn Header()
+{
+    return <h1>React </h1>
+}
+Anonymous function:
+const Header =function()
+{
+     return <h1>React </h1>
+}
+margin,padding:
+wrt element outer space is margin ,inner space is padding
+if u use default then no need to use brace while importing
+Why Preferred Today?
+Simpler syntax
+Hooks support
+Better performance optimizations • Easier testing
+Cleaner code
+Rendering Behaviour
+Functional components:
+• Re-render when props or state change
+Can be optimized using:
+React.memo
+useMemo
+Class component Life cycle events:
+constructor to component did mount there are 3 phases,Mounting ,updating,unmounting
+render is for mounting,updating
+How to maintain state in class component:define constructor,constructor has base class constructor(super which is mandatory)
+this.state={
+    title:"class component"
+}
+class component must have return this is lifecycle event for redenering means dispaly on UI
+constructor is also life cycle event used for initialization(variables or data).How to maintain state by using this.state, setsttae is used to update state,class components has extra syntaxes compared to fn component
+Pure & Impure component
+Pure Components Normal Component Re-renders whenever:
+• Parent re-renders
+Props change
+State changes
+Pure Component
+React JS
+Automatically performs shallow comparison of props & state.
+when parent rerenders child also rerenders that is why we need pure component,encapsulate child component inside React.memo
+
+React.memo
+React.memo is a performance optimization HOC that prevents unnecessary re-renders of functional components when their props have not changed.
+It works like a pure component for functional components.
+If the props are the same as the previous render → React skips re-rendering that component.
+Reconsilation:
+it is concept of virtual dom
+in class component it is Pure component
+First class functions are nothing but by using the function only, we have implemented these components, right. What is meant by first class component? A component that can be called from another component, a component that can be created from a declarative syntax, a component that can be created from an expression-based syntax by assigning to a variable and a component passing as input parameter to another component. By satisfying all these one, we can say a first class component.
+
+So first class component, a higher order component, do not be confused. If anybody asking like what is the difference between a higher order component versus a first class component or higher order function versus a first class function, simple. First class functions will follow all the rules, higher order functions follow only one rule that is a function that taking another function as input parameter, clear.
+
+First class function is only one rule, a function taking another function as input parameter. If I say a first class function, it should behave like a higher order function, variable function, anonymous function and expression-based function, all three rules, okay. If you want to take the difference, higher order component versus first class component.
+
+So React did not say about the comparison, all these things, this comparison will come from our experience, people will ask and try to compare. So higher order components means a component taking another component as input parameter. In case of first class component, tell me, so what is the first class component? A component, follow three rules, what are three rules? It could be declarative function, it can be expression-based function.
+
+Declarative function, so do not simply say like, I mean here it is okay, but in the interview, please try to explain what is the declarative function and expression-based function also, okay. Expression, what is mean by expression function? So again it will become, so a component, if a declarative function, a component can be anonymous function and a component can be assigned to a variable also, okay. So that one I just simplified and just to remember I am saying this one, if you are saying simply three rules, they may ask like, can I assign to a variable, okay, next one is the higher order component, okay.
+
+So while explaining an interview, you must be, what are the points you understood, right, try to explain the points. So some situations, interviews are not like us, right, whatever they are thinking in that prospective, they will be thinking and expecting answers, so we should add like all the points, they will be clear, okay. So as for a real-time project, how many types of keys are there, how many types, one is a feature component, in a real-time project wise I am saying component, okay.
+
+If I am asking about types of houses, you may answer like, I have two questions, one is types of houses and construction types of houses. If I am asking the types of houses means apartment, individual house or villa, okay, or else you can say like a shop, these are the types of houses. If I am same asking like a construction types, you can say like a complete cement waste, sand under bricks plus cement waste.
+
+Next like a simply a rock construction type, these are the types. So these components while you are explaining as per your real-time project, these are the types, usage, I mean to say usage types. So those are the construction types or the two types, one is the functional component, last one is construction types.
+
+These are real-time project usage type. Feature component, nothing but your login, product, dashboard, these are. Next one is the shared component.
+
+What is mean by shared? For example, you are having one model, okay, you are having a drop-down, you are having a pagination, the same pagination, can I use it in multiple? You are having a grid, can I use this grid in multiple places? So that is nothing but shared component. Next atomic component, what is mean by atomic component? In the grid, we are having grid cells, right. So just you two understood, I just give you like a, this is your atomic component, nothing but this one.
+
+So input label and text box. So the atomic can have some placeholder and the behaviour. So this atomic can be used as an email, correct? This atomic can, I can use like a user name, the same atomic I can use like a first name, last name, kind of anything.
+
+So one component, multiple behaviour, okay. See here, two atomic components I am using, email and password. So input type is a password, input type is an email, that you can pass as a property and you can play, okay.
+
+My context, that is a text box. That atomic component finally used inside of a template. So at the end, here you are having a login page.
+
+In this login page, this having a two atomic components which will be targeted. So page, page will have a template. Template will be organised by using a multiple atomic components.
+
