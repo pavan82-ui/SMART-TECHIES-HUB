@@ -485,4 +485,64 @@ So one component, multiple behaviour, okay. See here, two atomic components I am
 My context, that is a text box. That atomic component finally used inside of a template. So at the end, here you are having a login page.
 
 In this login page, this having a two atomic components which will be targeted. So page, page will have a template. Template will be organised by using a multiple atomic components.
+Controlled vs UnControlled Components:
+this.stae in class component is controlled component means internally component controlling it the state of component controlled by itself, in fc usestate
+State controlled by DOM is uncontrolled component means instead of recat state using differenet ways to handle data
+in real time use controlled component. the controlled component manages virtal dom etc.For uncontrooled component need to explicitly manage DOM
+How ur veryfing code in Inspect:using React Developer tools whre we can see rendering also
+class com;onent life cycle events:
+3 phases 1)mounting2)updating3)unmounting
+getDerivedStateFromProps:mostly we don't use (when we have parent-child relation to get props)
+render:to render jsx
+componentDidmount: ui is loaded need to perform API call
+
+button clicked then state changed then getDerivedStateFromProps will call then render fn will call
+ShouldComponentUpdate:
+if ShouldComponentUpdate is true then rerenders component happen
+getSnapshotBeforeUpdate: before ui update want to trace any changes
+componentDidUpdate:fire after component update
+componentWillUnmount:
+//any objects created during the comonent lifecycle should be destroyed here to avoid memory leaks
+Strict Mode:
+use strict in js:
+ "use strict"
+x=1;
+console.log(x); error// es6it will not allow undeclared variables
+rerendering comonent questions::
+React Fiber, Reconsilation process,virtual dom,time slicing, rerender phase,commit phase
+Classic component lifecycle having the three phases, one is like a mounting phases, second one is updating phases, third one is unmounting phases. So in the mounting what it will happen, which is nothing but the component is loading. In the updating phase, while user is modifying right, as a user you will modify something, text box is changing, I want to save this data, update this data.
+
+So that will become in the updating phase. Next one is unmounting. What is mean by unmounting? Your component is unmounted, which is loading out of the DOM.
+
+So there are three phases in case of classic component. So that is the reason if you are observing the class component, there is a lifecycle you must follow. So this is the declarative syntax or a sugar-coated syntax, extra you need to be add to your component, then only it will become a class component.
+
+In case of the React functional components are simple, whatever you want you can plug and play, like by using a hooks. Okay. So when this component will be start up from a mounting, my component is loaded.
+
+First constructor will be called. Yesterday we have seen right, I just created a state variables and binding a default value. Next.
+
+Next method is the get derived from, get a derived state from props. I will show you with the example. Okay.
+
+Next one is a render function, it will be render the UI. Next component did mount, like you have the user to perform AP calls and a timer actions. This is the one part of mounting phase.
+
+Next one is updating phase. In case of update also, if you are changing the parent component or passing the data to a child component, again get derived state from props will be called. Okay.
+
+Next one is the should component update. What does this mean by should component update? So if you want to update that before going to update the component or before going to render this one, if you want to update or not. So these methods are important.
+
+Nowadays this question is not asking frequently, but you should are good to know before going for an interview about the lifecycle. Next, get a snapshot before update. Next component did update.
+
+Next one is unmounting. Unmounting in the sense of once you are away from that component. For example, I open a registration page.
+
+I'm going out of a registration page. Okay. At that time, it will be unmount from or unload from the UI.
+
+That is called unmounting phase. Okay. So don't worry.
+
+Let us see all these methods with the example. So let me go to this class component. Yesterday I have added a constructor, right? So let me add a console.log of a constructor.
+
+So first method is a constructor. What is the second method? Get a derived state from props. This is the parent class itself.
+
+You don't have it, but I'm just adding a get a derived state from props. Okay. So let me add a console.log like get a derived state from props.
+
+Okay. So what is the next method? Next, you are having the render. Render is already added in the last.
+
+Okay. So finally, component did mount. Component did mount, which is nothing but your use effect.
 
