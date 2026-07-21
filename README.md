@@ -572,3 +572,24 @@ Okay. What is a reactive fibre architecture? What is a reactive fibre architectu
 
 We will do the comparison Reactive fibre will do the comparison in where in the virtual now So you are not should like it should be what is the topic here? For example, this take it as a B, you know the A and C so keys are a part of the comparison uniquely identified by the reactive fibre engine the Virtual down this reactive fibre engine introduced in a reactor 16 version for a comparison purpose simple straightforward answer You have a even like a five to six points in a one arm Okay So while you are following not only the notes So just to go to that video again and again in the video explanation can be different from the notes, right? For example, they may ask a question like Randomly for example, they are asking this one. What is a priority levels in the reconciliation process? Okay Reconciliation process of follows the three priorities high priority medium priority low priority this priority will be come in the reconciliation process of To render and the committing the elements on the UI in the high priority it is going to be load the Images buttons layouts the medium priority fetching the data and loaded. So low priority It will be do like a large objects priority This process will happen from the rendering phase to a committee The rendering phases virtual DOM will prioritise by using a reconciliation process Okay, so whatever you are understanding right then put it in a votes Simple yeah Any questions Okay, thank you if you have a question, please do stay on this Which floor
 
+React Rendering architecture:
+react render redender then commit
+            <button onClick={() => { setCount((c) => c + 1); setCount((c) => c + 5); setCount((c) => c + 3); setCnt((cc: any) => cc + 2); }}>Click</button>
+above will execute in synchronous or asynchronous?
+Btaching and scheduling 
+always state is predictable it will give one value
+states are pure functions,same type of input we are getting same type of output eventhough which are asynchronous always it is executing and giving value 8
+if state is mutable what will happen we will get 3 alerts here
+useEffect:
+
+useEffect(()=>{
+//side effect logic
+//cleanup/component unload logic
+
+},[])
+can we use multiple useEffects? yes
+useeffect will run after ur commit phase, use state will run before commit phase .commit phase is nothing but loading of virtual dom to real dom
+dependencies: first time it will allow second time it compares previos value with current value and if dependency value changes then it will fire
+without dependencies:it will reload again and again :when state changes component reload and useeffect will be reload again and again
+
+memory Leaks:
