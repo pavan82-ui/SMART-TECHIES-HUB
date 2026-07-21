@@ -6,7 +6,7 @@ import React from "react";
 
     console.log("user",1);
     return (
-       <tr>
+       <tr key={user.id}>
         <td>{user.id}</td>
         <td>{user.firstName} </td>  
         {/* // if u keep firstnaame it won't show any error.js is dymaic type  thers is no type safety */}

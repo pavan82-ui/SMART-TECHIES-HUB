@@ -546,3 +546,29 @@ Okay. So what is the next method? Next, you are having the render. Render is alr
 
 Okay. So finally, component did mount. Component did mount, which is nothing but your use effect.
 
+Virtual DOm:Replication of Real DOM
+initial componenent render
+Re-Render -where it si rerendering in Virtual DOM After rerender completed it commit the
+render virtual Dom to a DOM in between we are having time slicing
+React Fiber:
+IN Event Loop we have 2 things 1)call stack 2)QUeue stack in queue asynchronous operatiosn will executeAeg:Timers API calling those will execute in time slising phase
+Why React performance more than Angular:
+Angular has seperate html file,Recat has jsx code react will create object and render on UI by using virtual dom 
+reconsilation is comparing new value with old value 
+vdom is pure js object
+Key:
+In js it is idenfied by using id ,in React it is identified using key
+key is property of jsx element it is uniquly identify the jsx element
+React reconsilitaion by comparing old value and current value they are using React fiber engine
+In React fiber engine they are uniquly identifying uisng keys first.It will check keys are exist or not
+Batching:
+setstae is synchrinous eventhough multiple changes it will rerender only once
+ 
+We are completed discussed on this reactor rendering architecture now, I'm giving a pause and tell me do you have any question? So how many pages will go for a rendering? re-rendering Please everybody unmute yourself. Take it as this is interview and try to answer How many phases are happening in the re-rendering? What are those? A Rendering phase and the commit Rendering happening on the two phases. Rendering phase, commit.
+
+What happening in the rendering phase? Who will happen this, I mean, who will cause this rendering phase when you have updating the state or your props? Parent and the child. What happened when our rendering started faster? Reactor fibre created Nodes in the virtual DOM Reconciliation will be engine will become in the rendering phase compare the previous value under new value Previous value new value changes that is called re-render If the previous node or current node changes that is called a remount that will happen in the virtual DOM Okay in this virtual DOM instead of rendering or sending a bulk object to a UI it is going to be slice creating a chunks and forming a Fibre tree that fibre tree will go to a commit phase in the commit phase Re-render or object will be load In the priority, what are the priorities? High priority is nothing but a the less costlier elements like a text box dropdowns images Labels and then it will be complete Rendering run will come Now clear everyone on this diagram Yes Are you confident to explain but I know you can able to explain by the practise of reading two or three times So while you are reading this document, you may come to but still go to the video one time two time again So you will be more familiar So one of the theoretical and definitely asked a question from this Okay, maybe you can unmute yourself I will randomly ask a few questions from this topic right or wrong you can just give it What is the time slicing Is it only a synchronous operations Translating is the process of eating Large optic to a into a chance. Remember like the time slicing is the chance Thanks. 
+
+Okay. What is a reactive fibre architecture? What is a reactive fibre architecture Reactive fibre is a engine Reactive fibre is a engine in the reactor. Don't worry in the one Session you may not able to get but please be tranquil It was introduced in which version of react react a 16 version what it will do It will compare the previous value current value by the shallow comparison hmm And will render the virtual down not real down remember virtual down Now tell me what is a reactive fibre It will compare the previous and current value in virtual down So reactive fibre is an engine which is introduced in a 16 version It will compare the previous value current value it will be rendered Before this reactive fibre right they are manually comparing taking the previous value current value comparison and execute Okay, so are you confident now So I'm just giving a path if you have any question you can ask me I'm stopping For example, anybody ask you the question from the what is the keys you know, right? The keys is a part of comparison. 
+
+We will do the comparison Reactive fibre will do the comparison in where in the virtual now So you are not should like it should be what is the topic here? For example, this take it as a B, you know the A and C so keys are a part of the comparison uniquely identified by the reactive fibre engine the Virtual down this reactive fibre engine introduced in a reactor 16 version for a comparison purpose simple straightforward answer You have a even like a five to six points in a one arm Okay So while you are following not only the notes So just to go to that video again and again in the video explanation can be different from the notes, right? For example, they may ask a question like Randomly for example, they are asking this one. What is a priority levels in the reconciliation process? Okay Reconciliation process of follows the three priorities high priority medium priority low priority this priority will be come in the reconciliation process of To render and the committing the elements on the UI in the high priority it is going to be load the Images buttons layouts the medium priority fetching the data and loaded. So low priority It will be do like a large objects priority This process will happen from the rendering phase to a committee The rendering phases virtual DOM will prioritise by using a reconciliation process Okay, so whatever you are understanding right then put it in a votes Simple yeah Any questions Okay, thank you if you have a question, please do stay on this Which floor
+

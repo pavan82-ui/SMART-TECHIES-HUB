@@ -104,7 +104,7 @@ export function User() {
                     {
                         users && users.map((user) => {
                             return (
-                                <UserInfo user={user}></UserInfo> // this only stops rerendering other code rerendering
+                                <UserInfo user={user}  key={user.id}></UserInfo> // this only stops rerendering other code rerendering
                             )
                         })
                     }
