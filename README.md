@@ -593,3 +593,33 @@ dependencies: first time it will allow second time it compares previos value wit
 without dependencies:it will reload again and again :when state changes component reload and useeffect will be reload again and again
 
 memory Leaks:
+useRef:access the dom element and manipulate dom element
+    <button onClick={() => {
+                countRef.current++;
+                alert(countRef.current);
+            }}>
+                Increment
+            </button>
+            Parent Com :{countRef.current}
+            in alert value is getting but not in dom why :for which concepts react components rerender state and props but here using ref that is the reason
+only controlled components rerender
+useeffect load once dom is loaded
+uselayouteffect:fire before dom loadimg use for dom manipulation
+small component which created seperatley is called atomic component
+using props u can pass data from Parent to child,
+can i access child component in pareant so taht so that i can able to claer data set data possible by using forward ref not only properties u can also forwared reference also
+forwardRef:from Parent component we can access and control child component
+forwardRef is HOC, it accesps 2 parametrs props,ref
+usinf ref we can access child element in porent component
+forwardRef simply encapsulates ur component
+handling child component using forwardRef is not good.Use Imperative Hook:parent will give u command child acts on it
+utility component:It performs a task
+useEffect - asynchronous but useLayoutEffect(for showing popup eg in redbus) - synchronous
+useMemo:
+When we filter data in table ,search inpu we use this useMemo.useMemo merozie the data
+const filteredUsers =useMemo(()=>{
+    return users
+})
+useCallback
+React.memo used to control rerendering
+useTransition:

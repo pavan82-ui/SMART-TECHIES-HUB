@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import UserInfo from "../shared/user-info/user-info";
 import { getUsers, searchUsers } from "../../application/user/user.service";
 export function User() {
     const [users, setUsers] = useState<any[]>([]);
+    const [searchUserValue, setSearchUserValue] = useState("");
     const [cnt, setcnt] = useState(0);
+    const [count,setCount] = useState(0);
     const debouncedSearch = useRef<((searchVal: string) => void) | null>(null);
 
     //   function getUsers() {
@@ -79,8 +81,20 @@ export function User() {
         return () => clearInterval(interval);
     }, []);
 
+    const filteredUsers = useMemo(() => {
+        return searchUserValue
+            ? users.filter((x) => x.firstName.toLowerCase().indexOf(searchUserValue.toLowerCase()) !== -1)
+            : users;
+    }, [users, searchUserValue]); // i want to fire this function only when users or searchUserValue changes, not on every render
+
+
+ const dataFromChild=  useCallback (function(userRecord: any) {
+        console.log("data from child", userRecord);
+    },[])
+
     return (
         <>
+        <button onClick={()=>setCount(count + 1)}>Increment</button>
             User {cnt}
             <div>
                 <input type="text" onChange={(event) => debouncedSearch.current?.(event.target.value)} />
@@ -102,9 +116,9 @@ export function User() {
                 </thead>
                 <tbody>
                     {
-                        users && users.map((user) => {
+                        filteredUsers && filteredUsers.map((user) => {
                             return (
-                                <UserInfo user={user}  key={user.id}></UserInfo> // this only stops rerendering other code rerendering
+                                <UserInfo user={user} key={user.id}  copyData={(userRecord)=>dataFromChild(userRecord)}></UserInfo> // this only stops rerendering other code rerendering
                             )
                         })
                     }
