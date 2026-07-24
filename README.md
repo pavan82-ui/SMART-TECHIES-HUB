@@ -623,3 +623,17 @@ const filteredUsers =useMemo(()=>{
 useCallback
 React.memo used to control rerendering
 useTransition:
+2 types of props:
+1)data Props  :parent to child
+in order to pass adat from child tp paraent u need to expoase a fn in child
+2)event/action props
+object destructuring:
+React follows predictable data flow
+Props Drilling:Passing data between intermediate components 
+React Hook Form:-3rd party library used for form validation
+<input {...register}>
+... register we are having multiple register
+... is spread operator that is going to copy object
+Login:
+username:emilys
+password:emilyspass
