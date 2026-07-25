@@ -11,6 +11,8 @@ import { User } from './presentation/user/user'
 import Registration from './presentation/reg/registration'
 import Layout from './presentation/layout/layout'
 import UserProvider from './presentation/shared/user-provider/user-provider'
+import Sibling1 from './presentation/user-transition-hook/sibling/sibling1'
+import Sibling2 from './presentation/user-transition-hook/sibling/sibling2'
 
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
   }
   return (
     <div className="app-shell" style={divStyle}>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<LoginForm />} />
           <Route path='/login' element={<LoginForm />} />
@@ -35,7 +37,13 @@ function App() {
           }></Route>
 
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <ParentCom></ParentCom>
+      <Sibling1>
+
+      </Sibling1>
+      <Sibling2></Sibling2>
     </div>
   )
 }

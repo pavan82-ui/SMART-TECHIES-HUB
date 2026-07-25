@@ -1,5 +1,6 @@
 
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import loggerMiddleware from "../redux-middleware/redux-middleware";
 //create reducer function
 //reducer take 2 parms. state, action
 //state -> storage
@@ -19,5 +20,5 @@ const reducer = (state = initialState, action:any) => {
     }
 }
 //create store
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(loggerMiddleware));
 export default store
