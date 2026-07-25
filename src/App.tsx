@@ -9,6 +9,8 @@ import ParentSib from './presentation/user-transition-hook/sibling/parent-compon
 import SearchComponent from './presentation/user-transition-hook/use-tans-hook'
 import { User } from './presentation/user/user'
 import Registration from './presentation/reg/registration'
+import Layout from './presentation/layout/layout'
+import UserProvider from './presentation/shared/user-provider/user-provider'
 
 
 function App() {
@@ -23,6 +25,14 @@ function App() {
           <Route path='/login' element={<LoginForm />} />
           <Route path="/reg" element={<Registration></Registration>}></Route>
           <Route path="/reg/:id" element={<Registration></Registration>}></Route>
+          <Route path='/users' element={
+            <UserProvider>
+              <Layout>
+                <User></User>
+              </Layout>
+            </UserProvider>
+
+          }></Route>
 
         </Routes>
       </BrowserRouter>

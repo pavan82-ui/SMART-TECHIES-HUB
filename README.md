@@ -637,3 +637,14 @@ React Hook Form:-3rd party library used for form validation
 Login:
 username:emilys
 password:emilyspass
+
+Authentication & Authorization:
+validating user is called Authentication types:Form based authentication -Login-username& password
+windows based auth(internal) , sso, gmail-fb->social media
+token based auth 
+Authorization:Accessing specific pages/Modules:Once user authenticated user related policies, roles will fetch from DB, based on the policies,
+roles will we provide necessary access is authorization
+use Context:
+use context will hold user data and pass to a child components
+create context :is a hook used to pass data from parent to nth child components
+to share user data  globally created auth-contect.tsx file

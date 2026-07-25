@@ -1,6 +1,7 @@
-﻿import React from "react";
+﻿import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import UserContext from "../shared/auth-context/auth-context";
 
 type LoginFormValues = {
   name: string;
@@ -8,7 +9,12 @@ type LoginFormValues = {
 };
 
 function LoginForm() {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
+  const authContext = useContext(UserContext);
+  if (!authContext) {
+    throw new Error("AuthContext must be provided");
+  }
+  const { login } = authContext;
   const {
     register,
     handleSubmit,
@@ -33,7 +39,8 @@ function LoginForm() {
       if (response.ok) {
         console.log("Login success:", result);
         localStorage.setItem("token", result.token || result.accessToken);
-        alert("Logged in successfully!");
+        login(result)
+        navigate("/users");
       } else {
         console.error("Login failed:", result);
         alert(result.message || "Login failed");
