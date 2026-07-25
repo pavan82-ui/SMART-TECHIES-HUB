@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../shared/auth-context/auth-context";
-
+import store from "../../core/shared/redux-store/redux-store";
 type LoginFormValues = {
   name: string;
   password: string;
@@ -36,11 +36,14 @@ function LoginForm() {
 
       const result = await response.json();
 
-      if (response.ok) {
+        if (response.ok) {
         console.log("Login success:", result);
         localStorage.setItem("token", result.token || result.accessToken);
         login(result)
         navigate("/users");
+        const action ={type:"user", data:result}
+        store.dispatch(action)
+          // navigation complete
       } else {
         console.error("Login failed:", result);
         alert(result.message || "Login failed");

@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import UserInfo from "../shared/user-info/user-info";
 import { getUsers, searchUsers } from "../../application/user/user.service";
+import store from "../../core/shared/redux-store/redux-store";
 export function User() {
     const [users, setUsers] = useState<any[]>([]);
     const [searchUserValue, setSearchUserValue] = useState("");
     const [cnt, setcnt] = useState(0);
-    const [count,setCount] = useState(0);
+    const [count, setCount] = useState(0);
+
+    const [storeData, setStoreData] = useState('')
+
     const debouncedSearch = useRef<((searchVal: string) => void) | null>(null);
 
     //   function getUsers() {
@@ -78,7 +82,21 @@ export function User() {
             setcnt((prev) => prev + 1);
         }, 1000);
 
-        return () => clearInterval(interval);
+        const notify = () => {
+            const userData = store.getState()?.userData;
+            if (userData?.firstName) {
+                alert(userData.firstName);
+                console.log(userData.firstName);
+            }
+        };
+
+        notify();
+        const unsubscribe = store.subscribe(notify);
+
+        return () => {
+            clearInterval(interval);
+            unsubscribe();
+        };
     }, []);
 
     const filteredUsers = useMemo(() => {
@@ -88,13 +106,13 @@ export function User() {
     }, [users, searchUserValue]); // i want to fire this function only when users or searchUserValue changes, not on every render
 
 
- const dataFromChild=  useCallback (function(userRecord: any) {
+    const dataFromChild = useCallback(function (userRecord: any) {
         console.log("data from child", userRecord);
-    },[])
+    }, [])
 
     return (
         <>
-        <button onClick={()=>setCount(count + 1)}>Increment</button>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
             User {cnt}
             <div>
                 <input type="text" onChange={(event) => debouncedSearch.current?.(event.target.value)} />
@@ -118,7 +136,7 @@ export function User() {
                     {
                         filteredUsers && filteredUsers.map((user) => {
                             return (
-                                <UserInfo user={user} key={user.id}  copyData={(userRecord)=>dataFromChild(userRecord)}></UserInfo> // this only stops rerendering other code rerendering
+                                <UserInfo user={user} key={user.id} copyData={(userRecord) => dataFromChild(userRecord)}></UserInfo> // this only stops rerendering other code rerendering
                             )
                         })
                     }

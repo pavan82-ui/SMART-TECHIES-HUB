@@ -648,3 +648,12 @@ use Context:
 use context will hold user data and pass to a child components
 create context :is a hook used to pass data from parent to nth child components
 to share user data  globally created auth-contect.tsx file
+Redux:
+data can be passed in 2 ways:Relational componrnts(parent&child),non relational components(useContext:parent to child not from child to parent)
+but for non relational components can i pass data yes by using Redux
+Redux works on pricipal of subscription and braoadcast. we have c1&c2 c1 will send data to centralized store c2 will subscribe.If c1 exchange data c2 will get notified
+Redux maintains global state management
+Ui->Action->Reducer->Store->UI
+step1:create store
+step2:reducer fn(it takes 2 parametes 1)state2)action)
+we have 1 store and multiple values store in one store. state wil be updated by created store
