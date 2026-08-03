@@ -1,6 +1,7 @@
 
-import { applyMiddleware, createStore } from "redux";
 import loggerMiddleware from "../redux-middleware/redux-middleware";
+import { configureStore } from "@reduxjs/toolkit";
+
 //create reducer function
 //reducer take 2 parms. state, action
 //state -> storage
@@ -14,11 +15,15 @@ const reducer = (state = initialState, action:any) => {
         case "tasks":
             return { ...state, tasksData: action.data };
         case "txtdata":
-            return { ...state, txtdata:action.data}
+            return { ...state, txtdata: action.data };
         default:
             return state;
     }
 }
-//create store
-const store = createStore(reducer, applyMiddleware(loggerMiddleware));
+
+const store = configureStore({
+    reducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),
+});
+
 export default store

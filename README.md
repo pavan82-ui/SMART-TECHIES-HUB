@@ -664,4 +664,7 @@ component ->dispatch(action->middleware)->Store updated
 Redux Think, sega: both used to perform asynchronous calling
 Redux toolkit(latest): redux and redux toolkit both are same but there is difference in thunk and saga
 create store is depreaceted .The upgarded version of redux fixed in redux toolkit 
-npm instal @reduxjs/toolkit
+npm instal @reduxjs/toolkit : Component->dispatch(action)->slice->Reducer->store->useSelector()->Component UI update
+configurestore is higher order funt=ction
+redux usage: share data b/w independent components. to store userinfo, for centralized store go for redux
+compiled version of j.s file is chunk
